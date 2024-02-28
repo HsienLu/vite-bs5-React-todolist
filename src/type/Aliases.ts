@@ -4,3 +4,8 @@ export type userData = {
   password: string;
   rePassword?: string;
 };
+export type resData = {
+  status: boolean;
+  message?: string;
+  uid?: number;
+};

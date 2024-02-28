@@ -1,10 +1,14 @@
 import {useState, useEffect} from "react";
-import {userData} from "../type/Aliases";
+import {resData, userData} from "../type/Aliases";
 import axios from "axios";
 export default function Register() {
   const [registerData, setRegisterData] = useState<userData>({
     email: "",
     password: "",
+  });
+  const [resData, setResData] = useState<resData>({
+    status: false,
+    message: "程式碼出錯無法接受到回應",
   });
   const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterData({...registerData, [e.target.name]: e.target.value});
@@ -15,9 +19,13 @@ export default function Register() {
     console.log(body);
     axios
       .post("https://todolist-api.hexschool.io/users/sign_up", body)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        setResData({...resData, response});
+      })
       .catch((error) => console.log(error));
   };
+
   useEffect(() => {
     console.log(registerData);
   }, [registerData]);
