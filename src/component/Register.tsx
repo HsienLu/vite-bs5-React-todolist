@@ -6,10 +6,7 @@ export default function Register() {
     email: "",
     password: "",
   });
-  const [resData, setResData] = useState<resData>({
-    status: false,
-    message: "程式碼出錯無法接受到回應",
-  });
+  const [resData, setResData] = useState<{status: string, message: string, response?: any}>({status: '', message: ''});
   const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterData({...registerData, [e.target.name]: e.target.value});
   };
@@ -21,7 +18,7 @@ export default function Register() {
       .post("https://todolist-api.hexschool.io/users/sign_up", body)
       .then((response) => {
         console.log(response);
-        setResData({...resData, response});
+        setResData({...resData, response: response});
       })
       .catch((error) => console.log(error));
   };
@@ -35,7 +32,7 @@ export default function Register() {
         <div className="row align-items-top" style={{height: "100vh"}}>
           <div className="col-4 offset-1">
             <img
-              src="/public/HeroSection.png"
+              src="/HeroSection.png"
               style={{maxWidth: "100%", height: "auto"}}
               alt=""
             />

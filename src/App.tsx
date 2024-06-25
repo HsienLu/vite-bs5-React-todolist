@@ -20,7 +20,7 @@ function App() {
         <div className="row align-items-center" style={{height: "100vh"}}>
           <div className="col-4 offset-1">
             <img
-              src="/public/HeroSection.png"
+              src="/HeroSection.png"
               style={{maxWidth: "100%", height: "auto"}}
               alt=""
             />
